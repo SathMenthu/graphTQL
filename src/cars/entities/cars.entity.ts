@@ -1,6 +1,13 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { CreateCarInput } from '../dto/create-car.input';
+import { Owner } from '../../owners/entities/owner.entity';
 
 @Entity()
 @ObjectType()
@@ -29,4 +36,8 @@ export class Cars extends BaseEntity {
   @Column()
   @Field((type) => Int)
   productionYear: number;
+
+  @ManyToOne(() => Owner, (owner) => owner.cars)
+  @Field((type) => Owner)
+  owner: Owner;
 }
