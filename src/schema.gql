@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Car {
+type Cars {
   id: String!
   mark: String!
   model: String!
@@ -10,5 +10,15 @@ type Car {
 }
 
 type Query {
-  cars: [Car!]!
+  cars: [Cars!]!
+}
+
+type Mutation {
+  createCar(createCarInput: CreateCarInput!): Cars!
+}
+
+input CreateCarInput {
+  mark: String!
+  model: String!
+  productionYear: Int!
 }

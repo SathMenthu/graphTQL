@@ -3,6 +3,6 @@ import { CarsService } from './cars.service';
 import { CarsResolver } from './cars.resolver';
 
 @Module({
-  providers: [CarsService, CarsResolver]
+  providers: [CarsService, CarsResolver],
 })
 export class CarsModule {}
