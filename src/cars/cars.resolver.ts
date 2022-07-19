@@ -18,4 +18,9 @@ export class CarsResolver {
   ): Promise<Cars> {
     return this.carsService.createCar(createCarInput);
   }
+
+  @Query((returns) => Cars)
+  getCar(@Args('id', { type: () => String }) id: string): Promise<Cars> {
+    return this.carsService.findOne(id);
+  }
 }
