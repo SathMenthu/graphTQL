@@ -1,0 +1,14 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Car {
+  id: String!
+  mark: String!
+  model: String!
+  productionYear: Int!
+}
+
+type Query {
+  cars: [Car!]!
+}
