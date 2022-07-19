@@ -13,9 +13,9 @@ import { OwnersModule } from './owners/owners.module';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      username: 'root',
-      password: 'test',
-      database: 'graphql_cars',
+      username: 'username',
+      password: 'password',
+      database: 'databasename',
       entities: ['dist/**/**.entity{.ts,.js}'],
       bigNumberStrings: false,
       logging: false,

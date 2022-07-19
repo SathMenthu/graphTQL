@@ -19,6 +19,10 @@ export class Owner extends BaseEntity {
   @Field()
   name: string;
 
+  @Column()
+  @Field((type) => String)
+  ownerId: string;
+
   @OneToMany(() => Cars, (car) => car.owner)
   @Field((type) => [Cars, { nullable: true }])
   cars: Cars[];

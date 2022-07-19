@@ -3,6 +3,6 @@ import { OwnersService } from './owners.service';
 import { OwnersResolver } from './owners.resolver';
 
 @Module({
-  providers: [OwnersResolver, OwnersService]
+  providers: [OwnersResolver, OwnersService],
 })
 export class OwnersModule {}
