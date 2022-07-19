@@ -12,4 +12,8 @@ export class CarsService {
   async findAll(): Promise<Cars[]> {
     return await Cars.find();
   }
+
+  async findOne(id: string): Promise<Cars> {
+    return await Cars.findOneByOrFail({ id });
+  }
 }
