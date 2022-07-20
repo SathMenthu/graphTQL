@@ -1,26 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOwnerInput } from './dto/create-owner.input';
-import { UpdateOwnerInput } from './dto/update-owner.input';
+import { Owner } from './entities/owner.entity';
 
 @Injectable()
 export class OwnersService {
-  create(createOwnerInput: CreateOwnerInput) {
-    return 'This action adds a new owner';
+  async create(createOwnerInput: CreateOwnerInput) {
+    const newOwner = new Owner(createOwnerInput);
+    await newOwner.save();
+    return newOwner;
   }
 
   findAll() {
-    return `This action returns all owners`;
+    return Owner.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} owner`;
-  }
-
-  update(id: number, updateOwnerInput: UpdateOwnerInput) {
-    return `This action updates a #${id} owner`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} owner`;
+  findOne(id: string) {
+    return Owner.findOneByOrFail({ id });
   }
 }

@@ -7,10 +7,16 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Cars } from '../../cars/entities/cars.entity';
+import { CreateOwnerInput } from '../dto/create-owner.input';
 
 @Entity()
 @ObjectType()
 export class Owner extends BaseEntity {
+  constructor(createOwnerInput?: CreateOwnerInput) {
+    super();
+    if (createOwnerInput) this.name = createOwnerInput.name;
+  }
+
   @PrimaryGeneratedColumn('uuid')
   @Field()
   id: string;
@@ -18,10 +24,6 @@ export class Owner extends BaseEntity {
   @Column()
   @Field()
   name: string;
-
-  @Column()
-  @Field((type) => String)
-  ownerId: string;
 
   @OneToMany(() => Cars, (car) => car.owner)
   @Field((type) => [Cars, { nullable: true }])

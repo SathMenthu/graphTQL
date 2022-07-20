@@ -18,12 +18,17 @@ export class Cars extends BaseEntity {
       this.mark = createCarInput.mark;
       this.model = createCarInput.model;
       this.productionYear = createCarInput.productionYear;
+      this.ownerId = createCarInput.ownerId;
     }
   }
 
   @PrimaryGeneratedColumn('uuid')
   @Field()
   id: string;
+
+  @Column()
+  @Field((type) => String)
+  ownerId: string;
 
   @Column()
   @Field()

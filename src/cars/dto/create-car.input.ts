@@ -14,4 +14,7 @@ export class CreateCarInput {
   @IsInt()
   @Field((type) => Int)
   productionYear: number;
+
+  @Field((type) => String)
+  ownerId: string;
 }
