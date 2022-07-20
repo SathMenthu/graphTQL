@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { CarsModule } from './cars/cars.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -15,11 +14,11 @@ import { OwnersModule } from './owners/owners.module';
       host: 'localhost',
       username: 'root',
       password: 'test',
-      database: 'graphql_cars',
+      database: 'car_service',
       entities: ['dist/**/**.entity{.ts,.js}'],
       bigNumberStrings: false,
       logging: false,
-      synchronize: true,
+      synchronize: false,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -29,6 +28,5 @@ import { OwnersModule } from './owners/owners.module';
     OwnersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

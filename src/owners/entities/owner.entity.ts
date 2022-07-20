@@ -7,10 +7,16 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Cars } from '../../cars/entities/cars.entity';
+import { CreateOwnerInput } from '../dto/create-owner.input';
 
 @Entity()
 @ObjectType()
 export class Owner extends BaseEntity {
+  constructor(createOwnerInput?: CreateOwnerInput) {
+    super();
+    if (createOwnerInput) this.name = createOwnerInput.name;
+  }
+
   @PrimaryGeneratedColumn('uuid')
   @Field()
   id: string;
